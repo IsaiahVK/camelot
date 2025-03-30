@@ -17,7 +17,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void rootActions() {
 		var root = get(MyNodeLabels.root.toString());
-		root.add(new CreateAll(List.of(tavern, townSquare, greatHall, office, bedroom, campus, diningHall, dragonsDen, hallway, sword))
+		root.add(new CreateAll(List.of(tavern, townSquare, ResidenceOffice, bedroom, diningHall, sword))
 				.add(new CreateCharacterSequence(knight)).add(new CreateCharacterSequence(player))
 				.add(new SetPosition(knight, tavern, "Barrel"))
 				.add(new SetPosition(player, tavern))
