@@ -43,7 +43,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void askForAdviceActions() {
 		var node = get(MyNodeLabels.askForAdvice.toString());
 		node.add(new DialogSequence(player, knight, List.of("It takes many years of training to hone your skills, young one. If you can prove your worth, you can catapault through the ranks."),
-				List.of("How do I prove my worth?")));
+				List.of("Thank you!")));
 	}
 	//David Paul
 	@BuilderMethod
@@ -54,7 +54,12 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void thankTheKnightActions() {
 		var node = get(MyNodeLabels.thankTheKnight.toString());
-		node.add(new DialogSequence(player, knight, List.of("Oh, you're welcome. Now move along."), List.of("Yes sir!"))).add(new HideDialog())
+		node.add(new DialogSequence(player, knight, List.of("Oh, you're welcome. Now move along."), List.of("Yes sir!")));
+	}
+	@BuilderMethod 
+	public void leaveTavernActions() {
+		var node = get(MyNodeLabels.leaveTavern.toString());
+		node.add(new HideDialog())
 		.add(new Exit(player, tavernBackDoor, true)).add(new Enter(player, townSquareDoor, true))
 		.add(new SetPosition(player, townSquare));
 	}
