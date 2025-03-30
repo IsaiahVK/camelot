@@ -72,7 +72,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode = get(MyNodeLabels.leaveTavern.toString());
 		node.add(new Edge(choice, nextNode));
 	}
-
+	// Isaiah Kushner
 	@BuilderMethod
 	public void leaveTavernEdge() {
 		var node = get(MyNodeLabels.leaveTavern.toString());
@@ -125,7 +125,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode = get(MyNodeLabels.atRoom.toString());
 		node.add(new Edge(choice, nextNode));
 	}
-
+	
 	@BuilderMethod
 	public void atRoomEdge() {
 		var node = get(MyNodeLabels.atRoom.toString());
@@ -133,7 +133,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode = get(MyNodeLabels.readScroll.toString());
 		node.add(new Edge(choice, nextNode));
 	}
-
+	// Davis Voelkel
 	@BuilderMethod
 	public void readScrollEdge() {
 		var node = get(MyNodeLabels.readScroll.toString());
@@ -201,6 +201,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode = get(MyNodeLabels.clubFairToDiningHall.toString());
 		node.add(new Edge(choice, nextNode));
 	}
+	// David Paul
 	@BuilderMethod
 	public void clubFairToDiningHallEdge() {
 		var node = get(MyNodeLabels.clubFairToDiningHall.toString());
