@@ -1,3 +1,4 @@
+
 package myclassproject.mystorygraph;
 
 import static myclassproject.mystorygraph.MyStoryEntities.*;
@@ -100,7 +101,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void atRoomActions() {
 		var node = get(MyNodeLabels.atRoom.toString());
 		node.add(new HideDialog()).add(new Exit(player, residenceOfficeDoor, true)).add(new Enter(player, bedroomDoor, true))
-		.add(new SetPosition(player, bedroom)).add(new SetPosition(mysteriousScroll, bedroomTable));
+		.add(new SetPosition(player, bedroom)).add(new SetPosition(mysteriousScroll, bedroomTable)).add(new WalkTo(player, bedroom, "Bedroom table"));
 	}
 	@BuilderMethod
 	public void readScrollActions() {
