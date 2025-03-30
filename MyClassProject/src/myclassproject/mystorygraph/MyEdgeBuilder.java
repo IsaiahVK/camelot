@@ -61,13 +61,20 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void showOffSwordsmanshipEdge() {
 		var node = get(MyNodeLabels.showOffSwordsmanship.toString());
-		var choice = new DialogChoice("Thank you!");
+		var choice = new PlayerInteraction(player, MyChoiceLabels.ShowOffSwordsmanship.toString(), knight);
 		var nextNode = get(MyNodeLabels.thankTheKnight.toString());
 		node.add(new Edge(choice, nextNode));
 	}
 	@BuilderMethod
 	public void thankTheKnightEdge() {
 		var node = get(MyNodeLabels.thankTheKnight.toString());
+		var choice = new DialogChoice("Yes sir!");
+		var nextNode = get(MyNodeLabels.leaveTavern.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	@BuilderMethod
+	public void leaveTavernEdge() {
+		var node = get(MyNodeLabels.leaveTavern.toString());
 		var choice = new PlayerInteraction(MyChoiceLabels.Leave.toString(), tavernBackDoor, Icons.exit, "Go to town square");
 		var nextNode = get(MyNodeLabels.atTownSquare.toString());
 		node.add(new Edge(choice, nextNode));
@@ -78,5 +85,16 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var choice = new DialogChoice("So excited!");
 		var nextNode = get(MyNodeLabels.friendResponse.toString());
 		node.add(new Edge(choice, nextNode));
+	}
+	@BuilderMethod
+	public void friendResponseEdge() {
+		var node = get(MyNodeLabels.friendResponse.toString());
+		var choice1 = new DialogChoice("Veylthar Manor");
+		var nextNode1 = get(MyNodeLabels.velytharManor.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("Solara Keep");
+		var nextNode2 = get(MyNodeLabels.solaraKeepActions.toString());
+		node.add(new Edge(choice2, nextNode2));
 	}
 }
