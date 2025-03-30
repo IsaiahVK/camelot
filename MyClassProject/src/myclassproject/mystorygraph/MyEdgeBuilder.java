@@ -22,6 +22,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void rootEdges() {
 		var root = get(MyNodeLabels.root.toString());
+		// MenuChoice is only used here
 		var choice = new MenuChoice(MenuChoice.Options.Start);
 		var nextNode = get(MyNodeLabels.atTavern.toString());
 		root.add(new Edge(choice, nextNode));
@@ -60,7 +61,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void showOffSwordsmanshipEdge() {
 		var node = get(MyNodeLabels.showOffSwordsmanship.toString());
-		var choice = new PlayerInteraction(player, ShowOffSwordsmanship.toString(), knight);
+		var choice = new PlayerInteraction(player, MyChoiceLabels.ShowOffSwordsmanship.toString(), knight);
 		var nextNode = get(MyNodeLabels.thankTheKnight.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -101,12 +102,12 @@ public class MyEdgeBuilder extends NodeBuilder {
 		node.add(new Edge(choice2, nextNode2));
 	}
 
-	//Isaiah Kushner
 
 	@BuilderMethod
 	public void velytharManorEdge() {
 		var node = get(MyNodeLabels.velytharManor.toString());
 		var choice = new DialogChoice("See you later! I'm going to get my key.");
+		// Instead of going directly to atResidenceOffice, we go to our transition node.
 		var nextNode = get(MyNodeLabels.atResidenceOffice.toString());
 		node.add(new Edge(choice, nextNode));
 	}
