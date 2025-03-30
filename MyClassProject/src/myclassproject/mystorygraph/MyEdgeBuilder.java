@@ -72,4 +72,11 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode = get(MyNodeLabels.atTownSquare.toString());
 		node.add(new Edge(choice, nextNode));
 	}
+	@BuilderMethod
+	public void atTownSquareEdge() {
+		var node = get(MyNodeLabels.atTownSquare.toString());
+		var choice = new DialogChoice("So excited!");
+		var nextNode = get(MyNodeLabels.friendResponse.toString());
+		node.add(new Edge(choice, nextNode));
+	}
 }
