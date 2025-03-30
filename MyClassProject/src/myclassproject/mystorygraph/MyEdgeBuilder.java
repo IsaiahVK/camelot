@@ -30,7 +30,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void atTavernEdges() {
 		var node = get(MyNodeLabels.atTavern.toString());
-		var choice = new PlayerInteraction(TalkToKnight.toString(), knight, Icons.talk, "Talk to knight");
+		var choice = new PlayerInteraction(MyChoiceLabels.TalkToKnight.toString(), knight, Icons.talk, "Talk to knight");
 		var nextNode = get(MyNodeLabels.knightTalk.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -76,7 +76,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void leaveTavernEdge() {
 		var node = get(MyNodeLabels.leaveTavern.toString());
-		var choice = new PlayerInteraction(Leave.toString(), tavernBackDoor, Icons.exit, "Go to town square");
+		var choice = new PlayerInteraction(MyChoiceLabels.Leave.toString(), tavernBackDoor, Icons.exit, "Go to town square");
 		var nextNode = get(MyNodeLabels.atTownSquare.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -101,7 +101,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		node.add(new Edge(choice2, nextNode2));
 	}
 
-	// Completing the remaining nodes
+	//Isaiah Kushner
 
 	@BuilderMethod
 	public void velytharManorEdge() {
@@ -130,7 +130,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void atRoomEdge() {
 		var node = get(MyNodeLabels.atRoom.toString());
-		var choice = new MenuChoice(MenuChoice.Options.Continue);
+		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.readScroll.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -138,7 +138,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void readScrollEdge() {
 		var node = get(MyNodeLabels.readScroll.toString());
-		var choice = new MenuChoice(MenuChoice.Options.Continue);
+		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.wingIt.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -174,7 +174,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void eatDumplingEdge() {
 		var node = get(MyNodeLabels.eatDumpling.toString());
-		var choice = new MenuChoice(MenuChoice.Options.Continue);
+		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.greatTaste.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -182,7 +182,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void eatBoarEdge() {
 		var node = get(MyNodeLabels.eatBoar.toString());
-		var choice = new MenuChoice(MenuChoice.Options.Continue);
+		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.greatTaste.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -190,7 +190,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void eatPieEdge() {
 		var node = get(MyNodeLabels.eatPie.toString());
-		var choice = new MenuChoice(MenuChoice.Options.Continue);
+		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.greatTaste.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -206,7 +206,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void greatTasteEdge() {
 		var node = get(MyNodeLabels.greatTaste.toString());
-		var choice = new MenuChoice(MenuChoice.Options.Continue);
+		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.clubFairToDiningHall.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -214,7 +214,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void clubFairToDiningHallEdge() {
 		var node = get(MyNodeLabels.clubFairToDiningHall.toString());
-		var choice = new MenuChoice(MenuChoice.Options.Continue);
+		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.backToBed.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -222,7 +222,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void backToBedEdge() {
 		var node = get(MyNodeLabels.backToBed.toString());
-		var choice = new MenuChoice(MenuChoice.Options.Continue);
+		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.atHallway.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -242,7 +242,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void bladeOfChaosEdge() {
 		var node = get(MyNodeLabels.bladeOfChaos.toString());
-		var choice = new MenuChoice(MenuChoice.Options.Continue);
+		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.useBlade.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -250,7 +250,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void wandOfPrimordialPassionEdge() {
 		var node = get(MyNodeLabels.wandOfPrimordialPassion.toString());
-		var choice = new MenuChoice(MenuChoice.Options.Continue);
+		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.useWand.toString());
 		node.add(new Edge(choice, nextNode));
 	}
