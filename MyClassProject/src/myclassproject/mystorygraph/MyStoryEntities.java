@@ -19,7 +19,7 @@ public final class MyStoryEntities {
 	public static final Place diningHall = new Place("Dining Hall", PlaceTypes.DiningRoom);
 	public static final Place hallway = new Place("Hallway", PlaceTypes.Hallway);
 	public static final Item sword = new Item("Sword", ItemTypes.Sword);
-	public static final Furniture tavernBackDoor = new Furniture(tavern, FurnitureTypes.Backdoor);
+	public static final Furniture tavernBackDoor = new Furniture(tavern, FurnitureTypes.Door);
 	public static final Furniture townSquareDoor = new Furniture(townSquare, FurnitureTypes.BrownHouseDoor);
 	public static final Furniture residenceOfficeDoor = new Furniture(residenceOffice, FurnitureTypes.Door);
 	public static final Characters friend1 = new Characters("Friend1",BodyTypes.E,Clothing.Noble,HairStyle.Ponytail,Colors.Blonde,5);
