@@ -60,7 +60,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void showOffSwordsmanshipEdge() {
 		var node = get(MyNodeLabels.showOffSwordsmanship.toString());
-		var choice = new PlayerInteraction(player, ShowOffSwordsmanship.toString(), knight);
+		var choice = new PlayerInteraction(MyChoiceLabels.ThankKnight.toString(), knight, Icons.talk, "Thank the knight");
 		var nextNode = get(MyNodeLabels.thankTheKnight.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -77,6 +77,14 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void atTownSquareEdge() {
 		var node = get(MyNodeLabels.atTownSquare.toString());
+		var choice = new PlayerInteraction(MyChoiceLabels.TalkToFriend.toString(), friend1, Icons.talk, "Talk to Ella");
+		var nextNode = get(MyNodeLabels.friendTalk.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	
+	@BuilderMethod
+	public void friendTalkEdge() {
+		var node = get(MyNodeLabels.friendTalk.toString());
 		var choice = new DialogChoice("So excited!");
 		var nextNode = get(MyNodeLabels.friendResponse.toString());
 		node.add(new Edge(choice, nextNode));
@@ -107,7 +115,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void solaraKeepActionsEdge() {
 		var node = get(MyNodeLabels.solaraKeepActions.toString());
-		var choice = new DialogChoice("Oh, it sucks so much that we can't be roommates. I guess I will see you later. I'm heading to grab my key.");
+		var choice = new DialogChoice("Oh it sucks so much that we can't be roommates. I guess I will see you later. I'm heading to grab my key.");
 		var nextNode = get(MyNodeLabels.atResidenceOffice.toString());
 		node.add(new Edge(choice, nextNode));
 	}
@@ -115,10 +123,20 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void atResidenceOfficeEdge() {
 		var node = get(MyNodeLabels.atResidenceOffice.toString());
-		var choice = new DialogChoice("Thank you, ma' am.");
+		var choice = new PlayerInteraction(MyChoiceLabels.TalkToLady.toString(), oldLady, Icons.talk, "Talk to residence manager");
+		var nextNode = get(MyNodeLabels.ladyTalk.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	
+	@BuilderMethod
+	public void ladyTalkEdge() {
+		var node = get(MyNodeLabels.ladyTalk.toString());
+		var choice = new DialogChoice("Thank you ma' am.");
 		var nextNode = get(MyNodeLabels.atRoom.toString());
 		node.add(new Edge(choice, nextNode));
 	}
+	
+	
 
 	@BuilderMethod
 	public void atRoomEdge() {
@@ -132,26 +150,18 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void readScrollEdge() {
 		var node = get(MyNodeLabels.readScroll.toString());
 		var choice = new CloseNarrationChoice();
+		var nextNode = get(MyNodeLabels.scrollDone.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	
+	@BuilderMethod
+	public void scrollDone() {
+		var node = get(MyNodeLabels.scrollDone.toString());
+		var choice = new PlayerInteraction(MyChoiceLabels.WingIt.toString(), friend2, Icons.talk, "Talk to Corey");
 		var nextNode = get(MyNodeLabels.wingIt.toString());
 		node.add(new Edge(choice, nextNode));
 	}
-
-	@BuilderMethod
-	public void atDiningHallEdge() {
-		var node = get(MyNodeLabels.atDiningHall.toString());
-		var choice1 = new DialogChoice("Eat Dragonfire Dumpling");
-		var nextNode1 = get(MyNodeLabels.eatDumpling.toString());
-		node.add(new Edge(choice1, nextNode1));
-
-		var choice2 = new DialogChoice("Eat Roasted Boar");
-		var nextNode2 = get(MyNodeLabels.eatBoar.toString());
-		node.add(new Edge(choice2, nextNode2));
-
-		var choice3 = new DialogChoice("Eat Meat Pies");
-		var nextNode3 = get(MyNodeLabels.eatPie.toString());
-		node.add(new Edge(choice3, nextNode3));
-	}
-
+	
 	@BuilderMethod
 	public void wingItEdge() {
 		var node = get(MyNodeLabels.wingIt.toString());
@@ -160,15 +170,41 @@ public class MyEdgeBuilder extends NodeBuilder {
 		node.add(new Edge(choice1, nextNode1));
 
 		var choice2 = new DialogChoice("I want to see some clubs.");
-		var nextNode2 = get(MyNodeLabels.atClubFair.toString());
+		var nextNode2 = get(MyNodeLabels.bedroomToClub.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	
+	@BuilderMethod
+	public void atDiningHallEdge() {
+		var node = get(MyNodeLabels.atDiningHall.toString());
+		var choice = new CloseNarrationChoice();
+		var nextNode = get(MyNodeLabels.chooseEat.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+
+	@BuilderMethod
+	public void chooseEatEdge() {
+		var node = get(MyNodeLabels.chooseEat.toString());
+		var choice1 = new PlayerInteraction(MyChoiceLabels.DragonfireDumpling.toString(), dragonfireDumpling, Icons.apple, "Eat Dragonfire Dumpling");
+		var nextNode1 = get(MyNodeLabels.eatDumpling.toString());
+		node.add(new Edge(choice1, nextNode1));
+
+		var choice2 = new PlayerInteraction(MyChoiceLabels.RoastedBoar.toString(), roastedBoar, Icons.apple, "Eat Roasted Boar");
+		var nextNode2 = get(MyNodeLabels.eatBoar.toString());
+		node.add(new Edge(choice2, nextNode2));
+
+		var choice3 = new PlayerInteraction(MyChoiceLabels.MeatPies.toString(), meatPies, Icons.apple, "Eat Meat Pies");
+		var nextNode3 = get(MyNodeLabels.eatPie.toString());
+		node.add(new Edge(choice3, nextNode3));
+	}
+
+
 
 	@BuilderMethod
 	public void eatDumplingEdge() {
 		var node = get(MyNodeLabels.eatDumpling.toString());
 		var choice = new CloseNarrationChoice();
-		var nextNode = get(MyNodeLabels.greatTaste.toString());
+		var nextNode = get(MyNodeLabels.diningToClub.toString());
 		node.add(new Edge(choice, nextNode));
 	}
 
@@ -176,7 +212,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void eatBoarEdge() {
 		var node = get(MyNodeLabels.eatBoar.toString());
 		var choice = new CloseNarrationChoice();
-		var nextNode = get(MyNodeLabels.greatTaste.toString());
+		var nextNode = get(MyNodeLabels.diningToClub.toString());
 		node.add(new Edge(choice, nextNode));
 	}
 
@@ -184,15 +220,31 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void eatPieEdge() {
 		var node = get(MyNodeLabels.eatPie.toString());
 		var choice = new CloseNarrationChoice();
-		var nextNode = get(MyNodeLabels.greatTaste.toString());
+		var nextNode = get(MyNodeLabels.diningToClub.toString());
 		node.add(new Edge(choice, nextNode));
 	}
 
 	@BuilderMethod
+	public void diningToClubEdge() {
+		var node = get(MyNodeLabels.diningToClub.toString());
+		var choice = new PlayerInteraction(MyChoiceLabels.TalkAtClub.toString(), friend3, Icons.talk, "Talk to Alireza");
+		var nextNode = get(MyNodeLabels.atClubFair.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	
+	@BuilderMethod
+	public void bedroomToClubEdge() {
+		var node = get(MyNodeLabels.diningToClub.toString());
+		var choice = new PlayerInteraction(MyChoiceLabels.TalkAtClub.toString(), friend3, Icons.talk, "Talk to Alireza");
+		var nextNode = get(MyNodeLabels.atClubFair.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	
+	@BuilderMethod
 	public void atClubFairEdge() {
 		var node = get(MyNodeLabels.atClubFair.toString());
 		var choice = new DialogChoice("Sure! I love your recurve bow. Sign me up!");
-		var nextNode = get(MyNodeLabels.clubFairToDiningHall.toString());
+		var nextNode = get(MyNodeLabels.backToBed.toString());
 		node.add(new Edge(choice, nextNode));
 	}
 
@@ -201,14 +253,6 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var node = get(MyNodeLabels.greatTaste.toString());
 		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.clubFairToDiningHall.toString());
-		node.add(new Edge(choice, nextNode));
-	}
-
-	@BuilderMethod
-	public void clubFairToDiningHallEdge() {
-		var node = get(MyNodeLabels.clubFairToDiningHall.toString());
-		var choice = new CloseNarrationChoice();
-		var nextNode = get(MyNodeLabels.backToBed.toString());
 		node.add(new Edge(choice, nextNode));
 	}
 
@@ -252,7 +296,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void useBladeEdge() {
 		var node = get(MyNodeLabels.useBlade.toString());
 		var choice = new DialogChoice("Thank you for this test.");
-		var nextNode = get(MyNodeLabels.root.toString());
+		var nextNode = get(MyNodeLabels.endGame.toString());
 		node.add(new Edge(choice, nextNode));
 	}
 
@@ -260,7 +304,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void useWandEdge() {
 		var node = get(MyNodeLabels.useWand.toString());
 		var choice = new DialogChoice("Thank you for this test.");
-		var nextNode = get(MyNodeLabels.root.toString());
+		var nextNode = get(MyNodeLabels.endGame.toString());
 		node.add(new Edge(choice, nextNode));
 	}
 }
