@@ -12,6 +12,7 @@ public final class MyStoryEntities {
 	//import static myclassproject.mystorygraph.MyStoryEntities.*;
 	public static final Characters player = new Characters("Player", BodyTypes.H, Clothing.LightArmour, HairStyle.Long, Colors.Black, 5);
 	public static final Characters knight = new Characters("Knight", BodyTypes.F, Clothing.HeavyArmour, HairStyle.Short_Full, Colors.Black, 10);
+	public static final Characters knight2 = new Characters("The Knight", BodyTypes.F, Clothing.HeavyArmour, HairStyle.Short_Full, Colors.Black, 10);
 	public static final Place tavern = new Place("Tavern", PlaceTypes.Tavern);
 	public static final Place townSquare = new Place("Town Square", PlaceTypes.City);
 	public static final Place residenceOffice = new Place("Residence Office", PlaceTypes.Blacksmith);
@@ -22,8 +23,9 @@ public final class MyStoryEntities {
 	public static final Furniture tavernBackDoor = new Furniture(tavern, FurnitureTypes.Door);
 	public static final Furniture townSquareDoor = new Furniture(townSquare, FurnitureTypes.BrownHouseDoor);
 	public static final Furniture residenceOfficeDoor = new Furniture(residenceOffice, FurnitureTypes.Door);
-	public static final Characters friend1 = new Characters("Friend1",BodyTypes.E,Clothing.Noble,HairStyle.Ponytail,Colors.Blonde,5);
-	public static final Characters friend2 = new Characters("Friend2",BodyTypes.B,Clothing.Merchant,HairStyle.Spiky,Colors.Brown,5);
+	public static final Characters friend1 = new Characters("Ella",BodyTypes.E,Clothing.Noble,HairStyle.Ponytail,Colors.Blonde,5);
+	public static final Characters friend2 = new Characters("Corey",BodyTypes.B,Clothing.Merchant,HairStyle.Spiky,Colors.Brown,5);
+	public static final Characters friend3 = new Characters("Alireza", BodyTypes.F, Clothing.Bandit, HairStyle.Short, Colors.Brown, 10);
 	public static final Place veyltharManor = new Place("Veylthar Manor",PlaceTypes.AlchemyShop);
 	public static final Place solaraKeep = new Place("Eryndor Hall",PlaceTypes.Dungeon);
 	public static final Place clubFair = new Place("Club Fair",PlaceTypes.GreatHall);
