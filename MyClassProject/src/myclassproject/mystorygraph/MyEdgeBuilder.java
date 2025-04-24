@@ -1,3 +1,4 @@
+
 package myclassproject.mystorygraph;
 
 import java.util.List;
@@ -234,7 +235,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	
 	@BuilderMethod
 	public void bedroomToClubEdge() {
-		var node = get(MyNodeLabels.diningToClub.toString());
+		var node = get(MyNodeLabels.bedroomToClub.toString());
 		var choice = new PlayerInteraction(MyChoiceLabels.TalkAtClub.toString(), friend3, Icons.talk, "Talk to Alireza");
 		var nextNode = get(MyNodeLabels.atClubFair.toString());
 		node.add(new Edge(choice, nextNode));
@@ -245,14 +246,6 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var node = get(MyNodeLabels.atClubFair.toString());
 		var choice = new DialogChoice("Sure! I love your recurve bow. Sign me up!");
 		var nextNode = get(MyNodeLabels.backToBed.toString());
-		node.add(new Edge(choice, nextNode));
-	}
-
-	@BuilderMethod
-	public void greatTasteEdge() {
-		var node = get(MyNodeLabels.greatTaste.toString());
-		var choice = new CloseNarrationChoice();
-		var nextNode = get(MyNodeLabels.clubFairToDiningHall.toString());
 		node.add(new Edge(choice, nextNode));
 	}
 
