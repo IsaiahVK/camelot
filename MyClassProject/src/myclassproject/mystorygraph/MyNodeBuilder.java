@@ -4,7 +4,8 @@ import static myclassproject.mystorygraph.MyStoryEntities.*;
 
 import java.util.List;
 import com.actions.*;
-import com.actions.Cast.Spell;
+import com.actions.Cast.*;
+import com.actions.Cast.Spell.*;
 import com.sequences.*;
 import com.storygraph.*;
 
@@ -226,10 +227,10 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void useWandActions() {
 		var node = get(MyNodeLabels.useWand.toString());
-		node.add(new HideNarration()).add(new Draw(player, wandOfPrimordialPasssion))
-		.add(new Cast(player, knight2))
-		.add(new Cast(player, knight2))
-		.add(new Kneel(knight2))
+		node.add(new HideNarration()).add(new Draw(player, wandOfPrimordialPasssion)).add(new DisableInput())
+		.add(new Cast(player, knight2, Cast.Spell.valueOf("blue"))) 
+		.add(new Cast(player, knight2, Cast.Spell.valueOf("blue")))
+		.add(new Kneel(knight2)).add(new WalkTo(player, knight2))
 		.add(new DialogSequence(player, knight2, List.of("I yield. You are worthy."), List.of("Thank you for this test.")));
 	}
 	@BuilderMethod
